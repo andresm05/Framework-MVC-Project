@@ -36,3 +36,6 @@ Route::get('/', function () {
 
 Route::resource('/posts', PostController::class);
 Route::resource('/categories',CategoryController::class);
+
+//store route for post
+Route::post('/posts', [PostController::class, 'store'])->name('post.store');
