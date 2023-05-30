@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreRequest;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Facades\Gate;
@@ -20,7 +21,7 @@ class PostController extends Controller
         // {
         //     abort(403);
         // }
-        return view('dashboard.posts.index', compact('posts'));
+        return view('dashboard.post.index', compact('posts'));
     }
 
     /**
@@ -34,15 +35,17 @@ class PostController extends Controller
         // {
         //     abort(403);
         // }
-        return view('dashboard.posts.create', compact('categories','post'));
+        return view('dashboard.post.create', compact('categories','post'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        //validate post
+        $post = new Post($request->validated());
+        return to_route('post.index')->with('status', 'nuevo post creado');
     }
 
     /**
