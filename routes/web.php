@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Dashboard\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -36,6 +36,3 @@ Route::get('/', function () {
 
 Route::resource('/posts', PostController::class);
 Route::resource('/categories',CategoryController::class);
-
-//store route for post
-Route::post('/posts', [PostController::class, 'store'])->name('post.store');
