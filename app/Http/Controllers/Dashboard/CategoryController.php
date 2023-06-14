@@ -40,7 +40,7 @@ class CategoryController extends Controller
     {
         $category = new Category($request->validated());
         $category->save();
-        return redirect()->route('categories.index')->with('status', 'Nueva categoría creada');
+        return redirect()->route('category.index')->with('status', 'Nueva categoría creada');
     }
 
     /**
@@ -71,7 +71,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->update($request->all());
 
-        return redirect()->route('categories.index')->with('status', 'Categoría actualizada exitosamente');
+        return redirect()->route('category.index')->with('status', 'Categoría actualizada exitosamente');
     }
 
     /**
@@ -82,6 +82,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('categories.index')->with('status', 'Categoría eliminada exitosamente');
+        return redirect()->route('category.index')->with('status', 'Categoría eliminada exitosamente');
     }
 }
